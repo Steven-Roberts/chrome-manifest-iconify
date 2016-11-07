@@ -4,6 +4,8 @@ engines:
         config:
             languages:
                 - javascript
+        exclude_paths:
+            - "test/"
     fixme:
         enabled: true
     markdownlint:
