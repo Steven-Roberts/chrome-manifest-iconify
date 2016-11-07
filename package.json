@@ -21,7 +21,7 @@
     "unit": "mocha",
     "test": "npm run dependencies && npm run lint && npm run unit",
     "coverage": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly",
-    "report": "npm coverage && codeclimate-test-reporter < coverage/lcov.info"
+    "report": "npm run coverage && codeclimate-test-reporter < coverage/lcov.info"
   },
   "author": "Steven Roberts",
   "license": "MIT",
