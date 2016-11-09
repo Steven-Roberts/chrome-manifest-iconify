@@ -15,7 +15,22 @@ const _ = require('lodash');
 const path = require('path');
 
 /**
- * Generates icon set for a Chrome extension or app by parsing the v2 manifest
+ * Generates icon set for a Chrome extension or app by parsing the v2 manifest.
+ * Note that this function does not actually write the files.
+ * @example
+ * const chromeManifestIconify = require('chrome-manifest-iconify');
+ *
+ * chromeManifestIconify({
+ *     manifest: 'src/manifest.json',
+ *     masterIcon: 'master.png',
+ *     resizeMode: 'hermiteInterpolation'
+ * }).then((icons) => {
+ *     // Do stuff with icons
+ *     icons.forEach((i) => console.log(i.inspect()));
+ * }).catch((err) => {
+ *     // Oh, no! Something bad happened
+ *     console.log(err);
+ * });
  * @param {object} options - The options for generating the icons
  * @param {string} options.manifest - The path to the v2 manifest.json
  * @param {string|Buffer} options.masterIcon - Either a path or buffer of the
