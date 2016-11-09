@@ -1,13 +1,25 @@
 # chrome-manifest-iconify
 
+[![NPM version](https://img.shields.io/npm/v/chrome-manifest-iconify.svg?style=flat)](https://www.npmjs.com/package/chrome-manifest-iconify)
 [![Build Status](https://travis-ci.org/Steven-Roberts/chrome-manifest-iconify.svg?branch=master)](https://travis-ci.org/Steven-Roberts/chrome-manifest-iconify)
 [![dependencies Status](https://david-dm.org/Steven-Roberts/chrome-manifest-iconify/status.svg)](https://david-dm.org/Steven-Roberts/chrome-manifest-iconify)
 [![devDependencies Status](https://david-dm.org/Steven-Roberts/chrome-manifest-iconify/dev-status.svg)](https://david-dm.org/Steven-Roberts/chrome-manifest-iconify?type=dev)
 [![Test Coverage](https://codeclimate.com/github/Steven-Roberts/chrome-manifest-iconify/badges/coverage.svg)](https://codeclimate.com/github/Steven-Roberts/chrome-manifest-iconify/coverage)
 [![Code Climate](https://codeclimate.com/github/Steven-Roberts/chrome-manifest-iconify/badges/gpa.svg)](https://codeclimate.com/github/Steven-Roberts/chrome-manifest-iconify)
 
-Takes a master icon and automatically generates icon set for your Chrome
-extension or app by parsing the v2 manifest
+When creating a Chrome extension or app, you need to provide a set of icons for
+browser actions, page actions, context menus, and other places. Usually,
+these are just the same image resized. chrome-manifest-iconify is designed to
+simplify the process of creating all these icons by properly resizing them for
+you. Just provide it a master icon and the v2 manifest file. It will parse
+the manifest to determine all the icon sizes, names, and paths. You can choose
+from several resizing algorithms as provide by
+[JIMP](https://github.com/oliver-moran/jimp).
+
+## Installation
+```shell
+$ npm install --save-dev chrome-manifest-iconify
+```
 
 ## API
 {{#module name="chrome-manifest-iconify"}}
