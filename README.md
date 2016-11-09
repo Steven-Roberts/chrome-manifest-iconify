@@ -31,10 +31,12 @@ npm install --save-dev chrome-manifest-iconify
 <a name="exp_module_chrome-manifest-iconify--module.exports"></a>
 
 ### module.exports(options) ⇒ <code>Promise.&lt;Array.&lt;Vinyl&gt;&gt;</code> ⏏
-Generates icon set for a Chrome extension or app by parsing the v2 manifest.Note that this function does not actually write the files.
+Generates icon set for a Chrome extension or app by parsing the v2 manifest.
+Note that this function does not actually write the files.
 
 **Kind**: Exported function  
-**Returns**: <code>Promise.&lt;Array.&lt;Vinyl&gt;&gt;</code> - A promise that resolves with the generated iconsas an array of [Vinyl](https://github.com/gulpjs/vinyl) files  
+**Returns**: <code>Promise.&lt;Array.&lt;Vinyl&gt;&gt;</code> - A promise that resolves with the generated icons
+as an array of [Vinyl](https://github.com/gulpjs/vinyl) files  
 
 | Param | Type | Description |
 | --- | --- | --- |
@@ -45,6 +47,18 @@ Generates icon set for a Chrome extension or app by parsing the v2 manifest.Not
 
 **Example**  
 ```js
-const chromeManifestIconify = require('chrome-manifest-iconify');chromeManifestIconify({    manifest: 'src/manifest.json',    masterIcon: 'master.png',    resizeMode: 'hermiteInterpolation'}).then((icons) => {    // Do stuff with icons    icons.forEach((i) => console.log(i.inspect()));}).catch((err) => {    // Oh, no! Something bad happened    console.log(err);});
+const chromeManifestIconify = require('chrome-manifest-iconify');
+
+chromeManifestIconify({
+    manifest: 'src/manifest.json',
+    masterIcon: 'master.png',
+    resizeMode: 'hermiteInterpolation'
+}).then((icons) => {
+    // Do stuff with icons
+    icons.forEach((i) => console.log(i.inspect()));
+}).catch((err) => {
+    // Oh, no! Something bad happened
+    console.log(err);
+});
 ```
 <!-- markdownlint-enable-->
