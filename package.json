@@ -2,7 +2,7 @@
   "name": "chrome-manifest-iconify",
   "version": "1.0.2",
   "description": "Takes a master icon and automatically generates icon set for your Chrome extension or app by parsing the v2 manifest",
-  "author": "Steven Roberts (https://steven-roberts.github.io/)",
+  "author": "Steven Roberts",
   "homepage": "https://github.com/Steven-Roberts/chrome-manifest-iconify",
   "repository": "Steven-Roberts/chrome-manifest-iconify",
   "bugs": {
@@ -23,7 +23,6 @@
     "coverage": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly",
     "report": "npm run coverage && codeclimate-test-reporter < coverage/lcov.info"
   },
-  "author": "Steven Roberts",
   "license": "MIT",
   "dependencies": {
     "bluebird": "^3.4.6",
@@ -36,7 +35,7 @@
     "chai": "*",
     "chai-as-promised": "^6.0.0",
     "codeclimate-test-reporter": "^0.4.0",
-    "eslint": "^3.9.1",
+    "eslint": "^3.10.0",
     "eslint-config-steven-roberts": "Steven-Roberts/eslint-config",
     "istanbul": "*",
     "jsdoc-to-markdown": "^2.0.1",
