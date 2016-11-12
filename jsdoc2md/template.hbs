@@ -10,7 +10,7 @@
 When creating a Chrome extension or app, you need to provide a set of icons for
 context menus, browser actions, page actions, and the Chrome Web Store. Usually,
 these are just resized versions of the same image. The goal of
-chrome-manifest-iconify is to intellegently handle the tedious process of
+chrome-manifest-iconify is to intelligently handle the tedious process of
 generated all these resized clones. All you need to do is provide it a master
 icon and [v2 manifest](https://developer.chrome.com/extensions/manifest) file.
 It will parse the manifest to determine the sizes, names, types, and paths of

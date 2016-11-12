@@ -37,8 +37,7 @@ const path = require('path');
  * master icon from which all the generated icons will be reseized
  * @param {('nearestNeighbor'|'bilinearInterpolation'|'bicubicInterpolation'|
  * 'hermiteInterpolation'|'bezierInterpolation')} [options.resizeMode] - The
- * algorithm for
- * resizing the master icon
+ * algorithm for resizing the master icon
  * @returns {Promise<Vinyl[]>} A promise that resolves with the generated icons
  * as an array of [Vinyl]{@link https://github.com/gulpjs/vinyl} files
  */
