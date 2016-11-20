@@ -40,10 +40,10 @@ const chromeManifestIconify = require('chrome-manifest-iconify');
 chromeManifestIconify.async({
     manifest: 'src/manifest.json',
     masterIcon: 'master.png',
-    resizeMode: 'hermiteInterpolation'
+    resizeMode: chromeManifestIconify.ResizeMode.HERMITE
 }).then((icons) => {
     // Do stuff with icons
-    icons.forEach(console.log);
+    icons.forEach((i) => console.log(i.toString()));
 }).catch((err) => {
     // Oh, no! Something bad happened
     console.log(err);
@@ -134,11 +134,11 @@ Enum for resize algorithms
 
 | Name | Default |
 | --- | --- |
-| RESIZE_NEAREST_NEIGHBOR | <code>jimp.RESIZE_NEAREST_NEIGHBOR</code> |
-| RESIZE_BILINEAR | <code>jimp.RESIZE_BILINEAR</code> |
-| RESIZE_BICUBIC | <code>jimp.RESIZE_BICUBIC</code> |
-| RESIZE_HERMITE | <code>jimp.RESIZE_HERMITE</code> |
-| RESIZE_BEZIER | <code>jimp.RESIZE_BEZIER</code> |
+| NEAREST_NEIGHBOR | <code>jimp.RESIZE_NEAREST_NEIGHBOR</code> |
+| BILINEAR | <code>jimp.RESIZE_BILINEAR</code> |
+| BICUBIC | <code>jimp.RESIZE_BICUBIC</code> |
+| HERMITE | <code>jimp.RESIZE_HERMITE</code> |
+| BEZIER | <code>jimp.RESIZE_BEZIER</code> |
 
 <a name="module_chrome-manifest-iconify.async"></a>
 
@@ -155,7 +155,7 @@ resolves with the generated Icons
 | options | <code>object</code> |  | The options for generating the Icons |
 | options.manifest | <code>string</code> |  | The path to the v2 manifest.json |
 | options.masterIcon | <code>string</code> &#124; <code>Buffer</code> |  | Either a path or Buffer of the master icon from which all the generated icons will be reseized |
-| [options.resizeMode] | <code>[ResizeMode](#module_chrome-manifest-iconify.ResizeMode)</code> | <code>ResizeMode.RESIZE_BILINEAR</code> | The algorithm for resizing the master Icon |
+| [options.resizeMode] | <code>[ResizeMode](#module_chrome-manifest-iconify.ResizeMode)</code> | <code>ResizeMode.BILINEAR</code> | The algorithm for resizing the master Icon |
 
 
 <!-- markdownlint-enable-->

@@ -9,10 +9,10 @@
  * chromeManifestIconify.async({
  *     manifest: 'src/manifest.json',
  *     masterIcon: 'master.png',
- *     resizeMode: 'hermiteInterpolation'
+ *     resizeMode: chromeManifestIconify.ResizeMode.HERMITE
  * }).then((icons) => {
  *     // Do stuff with icons
- *     icons.forEach(console.log);
+ *     icons.forEach((i) => console.log(i.toString()));
  * }).catch((err) => {
  *     // Oh, no! Something bad happened
  *     console.log(err);
@@ -39,8 +39,8 @@ exports.ResizeMode = ResizeMode;
  * @param {string|Buffer} options.masterIcon - Either a path or Buffer of the
  * master icon from which all the generated icons will be reseized
  * @param {module:chrome-manifest-iconify.ResizeMode}
- * [options.resizeMode=ResizeMode.RESIZE_BILINEAR] - The algorithm for resizing
- * the master Icon
+ * [options.resizeMode=ResizeMode.BILINEAR] - The algorithm for resizing the
+ * master Icon
  * @returns {Promise<module:chrome-manifest-iconify.Icon>} A promise that
  * resolves with the generated Icons
  */
