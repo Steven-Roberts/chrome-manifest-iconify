@@ -15,11 +15,10 @@
     "bin"
   ],
   "scripts": {
-    "dependencies": "npm-check",
     "docs": "jsdoc2md -d 3 -t jsdoc2md/template.hbs index.js lib/* > README.md",
     "lint": "eslint .",
     "unit": "mocha",
-    "test": "npm run dependencies && npm run lint && npm run unit",
+    "test": "npm run lint && npm run unit",
     "coverage": "istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly",
     "report": "npm run coverage && codeclimate-test-reporter < coverage/lcov.info"
   },
@@ -39,7 +38,6 @@
     "eslint-config-steven-roberts": "Steven-Roberts/eslint-config",
     "istanbul": "*",
     "jsdoc-to-markdown": "^2.0.1",
-    "mocha": "*",
-    "npm-check": "*"
+    "mocha": "*"
   }
 }
