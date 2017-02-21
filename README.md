@@ -141,11 +141,11 @@ Enum for resize algorithms
 
 | Name | Default |
 | --- | --- |
-| NEAREST_NEIGHBOR | <code>jimp.RESIZE_NEAREST_NEIGHBOR</code> |
-| BILINEAR | <code>jimp.RESIZE_BILINEAR</code> |
-| BICUBIC | <code>jimp.RESIZE_BICUBIC</code> |
-| HERMITE | <code>jimp.RESIZE_HERMITE</code> |
-| BEZIER | <code>jimp.RESIZE_BEZIER</code> |
+| NEAREST_NEIGHBOR | <code>jimp.RESIZE_NEAREST_NEIGHBOR</code> | 
+| BILINEAR | <code>jimp.RESIZE_BILINEAR</code> | 
+| BICUBIC | <code>jimp.RESIZE_BICUBIC</code> | 
+| HERMITE | <code>jimp.RESIZE_HERMITE</code> | 
+| BEZIER | <code>jimp.RESIZE_BEZIER</code> | 
 
 <a name="module_chrome-manifest-iconify.async"></a>
 

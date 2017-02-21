@@ -1,6 +1,6 @@
 {
   "name": "chrome-manifest-iconify",
-  "version": "3.0.2",
+  "version": "3.0.3",
   "description": "Takes a master icon and automatically generates icon set for your Chrome extension or app by parsing the v2 manifest",
   "author": "Steven Roberts",
   "homepage": "https://github.com/Steven-Roberts/chrome-manifest-iconify",
@@ -37,7 +37,7 @@
     "eslint": "^3.10.2",
     "eslint-config-steven-roberts": "Steven-Roberts/eslint-config",
     "istanbul": "*",
-    "jsdoc-to-markdown": "^2.0.1",
+    "jsdoc-to-markdown": "^3.0.0",
     "mocha": "*"
   }
 }
