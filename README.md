@@ -66,14 +66,14 @@ chromeManifestIconify.async({
         * [.mimeType](#module_chrome-manifest-iconify.Icon+mimeType) : <code>string</code>
         * [.toString()](#module_chrome-manifest-iconify.Icon+toString) ⇒ <code>string</code>
     * [.ResizeMode](#module_chrome-manifest-iconify.ResizeMode)
-    * [.async(options)](#module_chrome-manifest-iconify.async) ⇒ <code>[Promise.&lt;Icon&gt;](#module_chrome-manifest-iconify.Icon)</code>
+    * [.async(options)](#module_chrome-manifest-iconify.async) ⇒ [<code>Promise.&lt;Icon&gt;</code>](#module_chrome-manifest-iconify.Icon)
 
 <a name="module_chrome-manifest-iconify.Icon"></a>
 
 #### chrome-manifest-iconify.Icon
 Class representing a Chrome extension or app icon
 
-**Kind**: static class of <code>[chrome-manifest-iconify](#module_chrome-manifest-iconify)</code>  
+**Kind**: static class of [<code>chrome-manifest-iconify</code>](#module_chrome-manifest-iconify)  
 
 * [.Icon](#module_chrome-manifest-iconify.Icon)
     * [new Icon(size, path, jimpData, contents)](#new_module_chrome-manifest-iconify.Icon_new)
@@ -91,7 +91,7 @@ Create an Icon
 
 | Param | Type | Description |
 | --- | --- | --- |
-| size | <code>string</code> &#124; <code>number</code> | The size of the Icon in pixels |
+| size | <code>string</code> \| <code>number</code> | The size of the Icon in pixels |
 | path | <code>string</code> | The file path to the Icon |
 | jimpData | <code>object</code> | The JIMP image data |
 | contents | <code>Buffer</code> | A Buffer of the Icon data |
@@ -101,41 +101,41 @@ Create an Icon
 ##### icon.size : <code>number</code>
 The size of the Icon in pixels
 
-**Kind**: instance property of <code>[Icon](#module_chrome-manifest-iconify.Icon)</code>  
+**Kind**: instance property of [<code>Icon</code>](#module_chrome-manifest-iconify.Icon)  
 **Read only**: true  
 <a name="module_chrome-manifest-iconify.Icon.Icon+path"></a>
 
 ##### icon.path : <code>string</code>
 The file path to the Icon
 
-**Kind**: instance property of <code>[Icon](#module_chrome-manifest-iconify.Icon)</code>  
+**Kind**: instance property of [<code>Icon</code>](#module_chrome-manifest-iconify.Icon)  
 **Read only**: true  
 <a name="module_chrome-manifest-iconify.Icon.Icon+contents"></a>
 
 ##### icon.contents : <code>Buffer</code>
 A Buffer of the Icon data
 
-**Kind**: instance property of <code>[Icon](#module_chrome-manifest-iconify.Icon)</code>  
+**Kind**: instance property of [<code>Icon</code>](#module_chrome-manifest-iconify.Icon)  
 **Read only**: true  
 <a name="module_chrome-manifest-iconify.Icon+mimeType"></a>
 
 ##### icon.mimeType : <code>string</code>
 Gets the MIME type of the Icon
 
-**Kind**: instance property of <code>[Icon](#module_chrome-manifest-iconify.Icon)</code>  
+**Kind**: instance property of [<code>Icon</code>](#module_chrome-manifest-iconify.Icon)  
 <a name="module_chrome-manifest-iconify.Icon+toString"></a>
 
 ##### icon.toString() ⇒ <code>string</code>
 Gets a human-friendly string representation of the Icon
 
-**Kind**: instance method of <code>[Icon](#module_chrome-manifest-iconify.Icon)</code>  
+**Kind**: instance method of [<code>Icon</code>](#module_chrome-manifest-iconify.Icon)  
 **Returns**: <code>string</code> - A string representation of the Icon  
 <a name="module_chrome-manifest-iconify.ResizeMode"></a>
 
 #### chrome-manifest-iconify.ResizeMode
 Enum for resize algorithms
 
-**Kind**: static enum of <code>[chrome-manifest-iconify](#module_chrome-manifest-iconify)</code>  
+**Kind**: static enum of [<code>chrome-manifest-iconify</code>](#module_chrome-manifest-iconify)  
 **Read only**: true  
 **Properties**
 
@@ -149,20 +149,20 @@ Enum for resize algorithms
 
 <a name="module_chrome-manifest-iconify.async"></a>
 
-#### chrome-manifest-iconify.async(options) ⇒ <code>[Promise.&lt;Icon&gt;](#module_chrome-manifest-iconify.Icon)</code>
+#### chrome-manifest-iconify.async(options) ⇒ [<code>Promise.&lt;Icon&gt;</code>](#module_chrome-manifest-iconify.Icon)
 Generates icon set for a Chrome extension or app by parsing the v2 manifest.
 Note that this function does not actually write the files.
 
-**Kind**: static method of <code>[chrome-manifest-iconify](#module_chrome-manifest-iconify)</code>  
-**Returns**: <code>[Promise.&lt;Icon&gt;](#module_chrome-manifest-iconify.Icon)</code> - A promise that
+**Kind**: static method of [<code>chrome-manifest-iconify</code>](#module_chrome-manifest-iconify)  
+**Returns**: [<code>Promise.&lt;Icon&gt;</code>](#module_chrome-manifest-iconify.Icon) - A promise that
 resolves with the generated Icons  
 
 | Param | Type | Default | Description |
 | --- | --- | --- | --- |
 | options | <code>object</code> |  | The options for generating the Icons |
 | options.manifest | <code>string</code> |  | The path to the v2 manifest.json |
-| options.masterIcon | <code>string</code> &#124; <code>Buffer</code> |  | Either a path or Buffer of the master icon from which all the generated icons will be reseized |
-| [options.resizeMode] | <code>[ResizeMode](#module_chrome-manifest-iconify.ResizeMode)</code> | <code>ResizeMode.BILINEAR</code> | The algorithm for resizing the master Icon |
+| options.masterIcon | <code>string</code> \| <code>Buffer</code> |  | Either a path or Buffer of the master icon from which all the generated icons will be reseized |
+| [options.resizeMode] | [<code>ResizeMode</code>](#module_chrome-manifest-iconify.ResizeMode) | <code>ResizeMode.BILINEAR</code> | The algorithm for resizing the master Icon |
 
 
 <!-- markdownlint-enable-->

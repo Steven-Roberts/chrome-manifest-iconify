@@ -99,7 +99,7 @@ describe('chrome-manifest-iconify', () => {
                 manifest: getManifestPath('invalid-extension.json'),
                 masterIcon: getIconPath('test-icon.png')
             }).should.eventually.be.rejectedWith(Error,
-                'Unsupported MIME type: application/octet-stream')
+                'icon-128.invalid has no MIME type')
         );
 
         it('should reject promise when the manifest has a non-positve icon' +
