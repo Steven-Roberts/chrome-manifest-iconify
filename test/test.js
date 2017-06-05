@@ -82,7 +82,7 @@ describe('chrome-manifest-iconify', () => {
                     manifest: getManifestPath('minimal.json'),
                     masterIcon: masterIconBuffer
                 }))
-                .should.eventually.be.fullfilled
+                .should.eventually.be.fulfilled
         );
 
         it('should reject promise when the manifest contains malformed JSON',
@@ -159,25 +159,21 @@ ${getManifestPath('img.jpg')} of size 38x38 with data `);
                 return Promise.map(icons, (i) => jimp.read(i.contents));
             })
             .then((icons) => {
-                // TODO: Use Jimp.getMIME() when it becomes available
-                /* eslint-disable no-underscore-dangle */
                 icons[0].bitmap.width.should.equal(16);
                 icons[0].bitmap.height.should.equal(16);
-                icons[0]._originalMime.should.equal('image/png');
+                icons[0].getMIME().should.equal('image/png');
 
                 icons[1].bitmap.width.should.equal(128);
                 icons[1].bitmap.height.should.equal(128);
-                icons[1]._originalMime.should.equal('image/bmp');
+                icons[1].getMIME().should.equal('image/bmp');
 
                 icons[2].bitmap.width.should.equal(19);
                 icons[2].bitmap.height.should.equal(19);
-                icons[2]._originalMime.should.equal('image/png');
+                icons[2].getMIME().should.equal('image/png');
 
                 icons[3].bitmap.width.should.equal(38);
                 icons[3].bitmap.height.should.equal(38);
-                icons[3]._originalMime.should.equal('image/jpeg');
-
-                /* eslint-enable no-underscore-dangle */
+                icons[3].getMIME().should.equal('image/jpeg');
             })
         );
 
@@ -195,13 +191,9 @@ ${getManifestPath('icon.png')} of size 19x19 with data `);
                 return jimp.read(icons[0].contents);
             })
             .then((icon) => {
-                // TODO: Use Jimp.getMIME() when it becomes available
-                /* eslint-disable no-underscore-dangle */
                 icon.bitmap.width.should.equal(19);
                 icon.bitmap.height.should.equal(19);
-                icon._originalMime.should.equal('image/png');
-
-                /* eslint-enable no-underscore-dangle */
+                icon.getMIME().should.equal('image/png');
             })
         );
     });
