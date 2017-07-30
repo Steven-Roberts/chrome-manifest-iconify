@@ -1,6 +1,7 @@
 # chrome-manifest-iconify
 
-[![NPM version](https://img.shields.io/npm/v/chrome-manifest-iconify.svg?style=flat)](https://www.npmjs.com/package/chrome-manifest-iconify)
+[![NPM version](https://img.shields.io/npm/v/chrome-manifest-iconify.svg)](https://www.npmjs.com/package/chrome-manifest-iconify)
+[![node](https://img.shields.io/node/v/chrome-manifest-iconify.svg)](https://www.npmjs.com/package/chrome-manifest-iconify)
 [![Build Status](https://travis-ci.org/Steven-Roberts/chrome-manifest-iconify.svg?branch=master)](https://travis-ci.org/Steven-Roberts/chrome-manifest-iconify)
 [![dependencies Status](https://david-dm.org/Steven-Roberts/chrome-manifest-iconify/status.svg)](https://david-dm.org/Steven-Roberts/chrome-manifest-iconify)
 [![devDependencies Status](https://david-dm.org/Steven-Roberts/chrome-manifest-iconify/dev-status.svg)](https://david-dm.org/Steven-Roberts/chrome-manifest-iconify?type=dev)
