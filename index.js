@@ -54,7 +54,9 @@ exports.async = (options) => {
     return Promise.join(
         Manifest.load(options.manifest),
         Icon.load(options.masterIcon),
-        (manifest, masterIcon) =>
-            manifest.getIcons(masterIcon, options.resizeMode)
+        (manifest, masterIcon) => manifest.getIcons(
+            masterIcon,
+            options.resizeMode
+        )
     );
 };

@@ -5,9 +5,8 @@
 [![Build Status](https://travis-ci.org/Steven-Roberts/chrome-manifest-iconify.svg?branch=master)](https://travis-ci.org/Steven-Roberts/chrome-manifest-iconify)
 [![dependencies Status](https://david-dm.org/Steven-Roberts/chrome-manifest-iconify/status.svg)](https://david-dm.org/Steven-Roberts/chrome-manifest-iconify)
 [![devDependencies Status](https://david-dm.org/Steven-Roberts/chrome-manifest-iconify/dev-status.svg)](https://david-dm.org/Steven-Roberts/chrome-manifest-iconify?type=dev)
-[![Test Coverage](https://codeclimate.com/github/Steven-Roberts/chrome-manifest-iconify/badges/coverage.svg)](https://codeclimate.com/github/Steven-Roberts/chrome-manifest-iconify/coverage)
-[![Code Climate](https://codeclimate.com/github/Steven-Roberts/chrome-manifest-iconify/badges/gpa.svg)](https://codeclimate.com/github/Steven-Roberts/chrome-manifest-iconify)
-
+[![Maintainability](https://api.codeclimate.com/v1/badges/6986226283263c5a42e2/maintainability)](https://codeclimate.com/github/Steven-Roberts/chrome-manifest-iconify/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/6986226283263c5a42e2/test_coverage)](https://codeclimate.com/github/Steven-Roberts/chrome-manifest-iconify/test_coverage)
 When creating a Chrome extension or app, you need to provide a set of icons for
 context menus, browser actions, page actions, and the Chrome Web Store. Usually,
 these are just resized versions of the same image. The goal of
