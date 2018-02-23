@@ -146,7 +146,12 @@ describe('chrome-manifest-iconify', () => {
                 manifest: getManifestPath('invalid-path.json'),
                 masterIcon: getIconPath('test-icon.png')
             }).should.eventually.be.rejectedWith(Error,
-                'Path must be a string. Received 3.14')
+
+                /*
+                 * The error message changed between Node 8 and 9.  This regex
+                 * is a bit of a hack but works for both
+                 */
+                /path.* must be .* string/i)
         );
 
         it(
