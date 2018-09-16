@@ -1,86 +1,48 @@
 'use strict';
 
-const chromeManifestIconify = require('../');
-const Promise = require('bluebird');
-const readFile = Promise.promisify(require('fs').readFile);
-const path = require('path');
+const {async, ResizeMode} = require('../');
+const {join} = require('path');
+const {promisify} = require('util');
+const readFile = promisify(require('fs').readFile);
 const jimp = require('jimp');
 
 // Congifure Chai
 const chai = require('chai');
 
 chai.use(require('chai-as-promised'));
-chai.use(require('chai-string'));
 chai.should();
 
-
-const getPath = path.join.bind(null, __dirname);
+const getPath = join.bind(null, __dirname);
 const getIconPath = getPath.bind(null, 'icons');
 const getManifestPath = getPath.bind(null, 'manifests');
 
 describe('chrome-manifest-iconify', () => {
     describe('#async', () => {
-        const async = chromeManifestIconify.async;
-
         it(
-            'should require an options object',
-            () => {
-                async.should.throw(TypeError, 'Options must be an object');
-            }
-        );
-
-        it(
-            'should not fail for valid resize mode',
-            () => {
-                const fn = () => async({
-                    manifest: getManifestPath('minimal.json'),
-                    masterIcon: getIconPath('test-icon.png'),
-                    resizeMode: chromeManifestIconify.ResizeMode.HERMITE
-                });
-
-                fn.should.not.throw(Error);
-            }
-        );
-
-        it(
-            'should require a manifest path be provided in options',
-            () => {
-                const fn = () => async({
-                    masterIcon: getIconPath('test-icon.png')
-                });
-
-                fn.should.throw(Error, 'The manifest path must be a string');
-            }
-        );
-
-        it(
-            'should require a master icon be provided in options',
-            () => {
-                const fn = () => async({
-                    manifest: getManifestPath('minimal.json')
-                });
-
-                fn.should.throw(Error,
-                    'The icon must be a file path or Buffer');
-            }
+            'should resolve promise for valid resize mode',
+            () => async({
+                manifest: getManifestPath('minimal.json'),
+                masterIcon: getIconPath('test-icon.png'),
+                resizeMode: ResizeMode.HERMITE
+            }).should.be.fulfilled
         );
 
         it(
             'should reject promise when the manifest does not exist',
             () => async({
-                manifest: getManifestPath('does-not-exist.json'),
+                manifest: getManifestPath('xxx.json'),
                 masterIcon: getIconPath('test-icon.png')
-            }).should.eventually.be.rejectedWith(Error, new RegExp('ENOENT: ' +
-                'no such file or directory, open \'.*does-not-exist.json\''))
+            }).should.be.rejectedWith(Error,
+                /ENOENT: no such file or directory, open '.*xxx.json'/u)
         );
 
         it(
             'should reject promise when the master icon does not exist',
             () => async({
                 manifest: getManifestPath('minimal.json'),
-                masterIcon: getIconPath('does-not-exist.jpg')
-            }).should.eventually.be.rejectedWith(Error, new RegExp('ENOENT: ' +
-                'no such file or directory, open \'.*does-not-exist.jpg\''))
+                masterIcon: getIconPath('xxx.jpg')
+            }).should.be.rejectedWith(Error,
+                /ENOENT: no such file or directory, open '.*xxx.jpg'/u)
         );
 
         it(
@@ -88,18 +50,22 @@ describe('chrome-manifest-iconify', () => {
             () => async({
                 manifest: getManifestPath('minimal.json'),
                 masterIcon: getIconPath('not-square.png')
-            }).should.eventually.be.rejectedWith(Error,
-                'The icon has size 128x64 which is not square')
+            }).should.be.rejectedWith(Error,
+                'The icon has size 128x64, which is not square')
         );
 
         it(
             'should resolve promise when the master icon is a valid buffer',
-            () => readFile(getIconPath('test-icon.png'))
-                .then((masterIconBuffer) => async({
+            async () => {
+                const masterIconBuffer = await readFile(
+                    getIconPath('test-icon.png')
+                );
+
+                return async({
                     manifest: getManifestPath('minimal.json'),
                     masterIcon: masterIconBuffer
-                }))
-                .should.eventually.be.fulfilled
+                }).should.be.fulfilled;
+            }
         );
 
         it(
@@ -107,51 +73,7 @@ describe('chrome-manifest-iconify', () => {
             () => async({
                 manifest: getManifestPath('malformed.json'),
                 masterIcon: getIconPath('test-icon.png')
-            }).should.eventually.be.rejectedWith(SyntaxError,
-                'Unexpected token')
-        );
-
-        it(
-            'should reject promise when the manifest contains an invalid ' +
-                'icon extension',
-            () => async({
-                manifest: getManifestPath('invalid-extension.json'),
-                masterIcon: getIconPath('test-icon.png')
-            }).should.eventually.be.rejectedWith(Error,
-                'icon-128.invalid has no MIME type')
-        );
-
-        it(
-            'should reject promise when the manifest has a non-positve icon' +
-                'size',
-            () => async({
-                manifest: getManifestPath('negative-size.json'),
-                masterIcon: getIconPath('test-icon.png')
-            }).should.eventually.be.rejectedWith(Error,
-                'The icon size -42 is not a positive integer')
-        );
-
-        it(
-            'should reject promise when the manifest has a NaN icon size',
-            () => async({
-                manifest: getManifestPath('nan-size.json'),
-                masterIcon: getIconPath('test-icon.png')
-            }).should.eventually.be.rejectedWith(Error,
-                'The icon size abc is not a positive integer')
-        );
-
-        it(
-            'should reject promise when the manifest has an invalid icon path',
-            () => async({
-                manifest: getManifestPath('invalid-path.json'),
-                masterIcon: getIconPath('test-icon.png')
-            }).should.eventually.be.rejectedWith(Error,
-
-                /*
-                 * The error message changed between Node 8 and 9.  This regex
-                 * is a bit of a hack but works for both
-                 */
-                /path.* must be .* string/i)
+            }).should.be.rejectedWith(SyntaxError, 'Unexpected token')
         );
 
         it(
@@ -160,71 +82,68 @@ describe('chrome-manifest-iconify', () => {
             () => async({
                 manifest: getManifestPath('same-path-different-size.json'),
                 masterIcon: getIconPath('test-icon.png')
-            }).should.eventually.be.rejectedWith(Error, 'The manifest ' +
-                'contains icons with sizes 128 and 16 from the same path ' +
-                'icon.png')
+            }).should.be.rejectedWith(Error, 'The manifest contains icons ' +
+                'with sizes 128 and 16 from the same path icon.png')
         );
 
         it(
             'should resolve promise with icons for a valid manifest',
-            () => async({
-                manifest: getManifestPath('manifest.json'),
-                masterIcon: getIconPath('test-icon.png')
-            })
-                .then((icons) => {
-                    icons.should.be.an('array').with.length(4);
-                    icons.forEach((i) => i.should.have.property('contents')
-                        .that.has.length.at.least(0));
+            async () => {
+                const icons = await async({
+                    manifest: getManifestPath('manifest.json'),
+                    masterIcon: getIconPath('test-icon.png')
+                });
 
-                    icons[0].toString().should.startWith(`Icon \
-${getManifestPath('icon-16.png')} of size 16x16 with data `);
-                    icons[1].toString().should.startWith(`Icon \
-${getManifestPath('icon-128.bmp')} of size 128x128 with data `);
-                    icons[2].toString().should.startWith(`Icon \
-${getManifestPath('a', 'icon-19.png')} of size 19x19 with data `);
-                    icons[3].toString().should.startWith(`Icon \
-${getManifestPath('img.jpg')} of size 38x38 with data `);
+                icons.should.be.an('array').with.length(4);
 
-                    return Promise.map(icons, (i) => jimp.read(i.contents));
-                })
-                .then((icons) => {
-                    icons[0].bitmap.width.should.equal(16);
-                    icons[0].bitmap.height.should.equal(16);
-                    icons[0].getMIME().should.equal('image/png');
+                icons[0].toString().should.equal(`Icon \
+${getManifestPath('icon-16.png')} of size 16x16`);
+                icons[1].toString().should.equal(`Icon \
+${getManifestPath('icon-128.bmp')} of size 128x128`);
+                icons[2].toString().should.equal(`Icon \
+${getManifestPath('a', 'icon-19.png')} of size 19x19`);
+                icons[3].toString().should.equal(`Icon \
+${getManifestPath('img.jpg')} of size 38x38`);
 
-                    icons[1].bitmap.width.should.equal(128);
-                    icons[1].bitmap.height.should.equal(128);
-                    icons[1].getMIME().should.equal('image/bmp');
+                const jimpData = await Promise
+                    .all(icons.map((i) => i.contents.then(jimp.read)));
 
-                    icons[2].bitmap.width.should.equal(19);
-                    icons[2].bitmap.height.should.equal(19);
-                    icons[2].getMIME().should.equal('image/png');
+                jimpData[0].bitmap.width.should.equal(16);
+                jimpData[0].bitmap.height.should.equal(16);
+                jimpData[0].getMIME().should.equal('image/png');
 
-                    icons[3].bitmap.width.should.equal(38);
-                    icons[3].bitmap.height.should.equal(38);
-                    icons[3].getMIME().should.equal('image/jpeg');
-                })
+                jimpData[1].bitmap.width.should.equal(128);
+                jimpData[1].bitmap.height.should.equal(128);
+                jimpData[1].getMIME().should.equal('image/bmp');
+
+                jimpData[2].bitmap.width.should.equal(19);
+                jimpData[2].bitmap.height.should.equal(19);
+                jimpData[2].getMIME().should.equal('image/png');
+
+                jimpData[3].bitmap.width.should.equal(38);
+                jimpData[3].bitmap.height.should.equal(38);
+                jimpData[3].getMIME().should.equal('image/jpeg');
+            }
         );
 
         it(
             'should resolve promise when manifest has duplicate icon',
-            () => async({
-                manifest: getManifestPath('duplicate-icon.json'),
-                masterIcon: getIconPath('test-icon.png'),
-                resizeMode: chromeManifestIconify.ResizeMode.NEAREST_NEIGHBOR
-            })
-                .then((icons) => {
-                    icons.should.be.an('array').with.length(1);
-                    icons[0].toString().should.startWith(`Icon \
-${getManifestPath('icon.png')} of size 19x19 with data `);
+            async () => {
+                const icons = await async({
+                    manifest: getManifestPath('duplicate-icon.json'),
+                    masterIcon: getIconPath('test-icon.png'),
+                    resizeMode: ResizeMode.NEAREST_NEIGHBOR
+                });
 
-                    return jimp.read(icons[0].contents);
-                })
-                .then((icon) => {
-                    icon.bitmap.width.should.equal(19);
-                    icon.bitmap.height.should.equal(19);
-                    icon.getMIME().should.equal('image/png');
-                })
+                icons.should.be.an('array').with.length(1);
+                icons[0].toString().should.equal(`Icon \
+${getManifestPath('icon.png')} of size 19x19`);
+
+                const jimpData = await jimp.read(await icons[0].contents);
+                jimpData.bitmap.width.should.equal(19);
+                jimpData.bitmap.height.should.equal(19);
+                jimpData.getMIME().should.equal('image/png');
+            }
         );
     });
 });

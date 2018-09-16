@@ -1,4 +1,5 @@
 env:
      mocha: true
 rules:
+    max-lines-per-function: "off"
     no-magic-numbers: "off"
