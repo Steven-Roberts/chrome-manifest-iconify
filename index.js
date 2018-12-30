@@ -6,12 +6,11 @@
  * @example
  * const chromeManifestIconify = require('chrome-manifest-iconify');
  *
- * const printIcons = async () => {
+ * const loadIcons = async () => {
  *     try {
  *         const icons = await chromeManifestIconify.async({
  *             manifest: 'src/manifest.json',
- *             masterIcon: 'img/test-icon.png',
- *             resizeMode: chromeManifestIconify.ResizeMode.HERMITE
+ *             masterIcon: 'img/test-icon.png'
  *         });
  *
  *         // Do stuff with icons
@@ -20,17 +19,15 @@
  *         console.log(buffers);
  *     } catch (err) {
  *         // Oh, no! Something bad happened
- *         console.log(err);
+ *         console.error(err);
  *     }
  * };
  */
 
 const Manifest = require('./lib/manifest');
 const Icon = require('./lib/icon');
-const ResizeMode = require('./lib/resizeMode');
 
 exports.Icon = Icon;
-exports.ResizeMode = ResizeMode;
 
 /**
  * Generates icon set for a Chrome extension or app by parsing the v2 manifest.
@@ -40,11 +37,16 @@ exports.ResizeMode = ResizeMode;
  * @param {string} options.manifest - The path to the v2 manifest.json
  * @param {string|Buffer} options.masterIcon - Either a path or Buffer of the
  * master icon from which all the generated icons will be reseized
- * @param {module:chrome-manifest-iconify.ResizeMode}
- * [options.resizeMode=ResizeMode.BILINEAR] - The algorithm for resizing the
- * master Icon
+ * @param {string} [options.outDir=parent directory of manifest] - Base
+ * directory of the generated Icons
+ * @param {string} [options.resizeMode] - The name of a
+ * {@link http://sharp.pixelplumbing.com/en/stable/api-resize Sharp kernel}
  * @returns {Promise<module:chrome-manifest-iconify.Icon[]>} A promise that
  * resolves with the generated Icons
  */
-exports.async = async (options) => (await Manifest.load(options.manifest))
-    .getIcons(await Icon.load(options.masterIcon), options.resizeMode);
+exports.async = async (options) => {
+    const manifest = await Manifest.load(options.manifest);
+    const masterIcon = Icon.load(options.masterIcon);
+
+    return manifest.getIcons(masterIcon, options.resizeMode, options.outDir);
+};

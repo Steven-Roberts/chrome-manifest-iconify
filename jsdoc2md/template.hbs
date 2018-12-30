@@ -15,13 +15,33 @@ generated all these resized clones. All you need to do is provide it a master
 icon and [v2 manifest](https://developer.chrome.com/extensions/manifest) file.
 It will parse the manifest to determine the sizes, names, types, and paths of
 the icons it needs to generate. You can choose from several resizing algorithms
-as provide by [JIMP](https://github.com/oliver-moran/jimp) so your entire icon
+as provided by [Sharp](https://sharp.dimens.io/en/stable/) so your entire icon
 set looks awesome.
 
 ## Installation
 
 ```shell
 npm install --save-dev chrome-manifest-iconify
+```
+
+## CLI
+
+```shell
+Options:
+  --help             Show help                                         [boolean]
+  --version          Show version number                               [boolean]
+  -i, --master-icon  Path to the master icon                 [string] [required]
+  -m, --manifest     Path to the v2 manifest.json
+                                             [string] [default: "manifest.json"]
+  -r, --resize-mode  Algorithm for resizing the master icon
+     [choices: "nearest", "cubic", "mitchell", "lanczos2", "lanczos3"] [default:
+                                                                     "lanczos3"]
+  -o, --out-dir      Directory to write the icons                       [string]
+
+Examples:
+  chrome-manifest-iconify -i master.svg
+  chrome-manifest-iconify -i master.jpg -m src/manifest.json -r nearest -o
+  build/icons
 ```
 
 ## Gulp

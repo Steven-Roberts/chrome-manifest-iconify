@@ -4,7 +4,7 @@
     "version": "1",
     "icons": {
         "16": "icon-16.png",
-        "128": "icon-128.bmp"
+        "128": "icon-128.jpg"
     },
     "browser_action": {
         "default_icon": {
