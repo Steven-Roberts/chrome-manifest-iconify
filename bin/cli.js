@@ -6,7 +6,7 @@ const {async} = require('../');
 const yargs = require('yargs');
 const {kernel} = require('sharp');
 
-const {argv} = yargs.scriptName('chrome-manifest-iconify')
+const {argv} = yargs
     .usage('$0 - Generates icon set for a Chrome extension or app by parsing' +
         'the v2 manifest')
     .example('$0 -i master.svg')

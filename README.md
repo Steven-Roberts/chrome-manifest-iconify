@@ -15,7 +15,7 @@ generated all these resized clones. All you need to do is provide it a master
 icon and [v2 manifest](https://developer.chrome.com/extensions/manifest) file.
 It will parse the manifest to determine the sizes, names, types, and paths of
 the icons it needs to generate. You can choose from several resizing algorithms
-as provide by [Sharp](https://sharp.dimens.io/en/stable/) so your entire icon
+as provided by [Sharp](https://sharp.dimens.io/en/stable/) so your entire icon
 set looks awesome.
 
 ## Installation
@@ -142,12 +142,12 @@ Note that this function does not actually write the files.
 **Returns**: <code>Promise.&lt;Array.&lt;module:chrome-manifest-iconify.Icon&gt;&gt;</code> - A promise that
 resolves with the generated Icons  
 
-| Param | Type | Default | Description |
-| --- | --- | --- | --- |
-| options | <code>object</code> |  | The options for generating the Icons |
-| options.manifest | <code>string</code> |  | The path to the v2 manifest.json |
-| options.masterIcon | <code>string</code> \| <code>Buffer</code> |  | Either a path or Buffer of the master icon from which all the generated icons will be reseized |
-| [options.outDir] | <code>string</code> | <code>&quot;parent directory of manifest&quot;</code> | Base directory of the generated Icons |
-| [options.resizeMode] | <code>string</code> |  | The name of a [Sharp kernel](http://sharp.pixelplumbing.com/en/stable/api-resize) |
+| Param | Type | Description |
+| --- | --- | --- |
+| options | <code>object</code> | The options for generating the Icons |
+| options.manifest | <code>string</code> | The path to the v2 manifest.json |
+| options.masterIcon | <code>string</code> \| <code>Buffer</code> | Either a path or Buffer of the master icon from which all the generated icons will be reseized |
+| [options.outDir] | <code>string</code> | Base directory of the generated Icons. Defaults to parent directory of manifest |
+| [options.resizeMode] | <code>string</code> | The name of a [Sharp kernel](http://sharp.pixelplumbing.com/en/stable/api-resize) |
 
 

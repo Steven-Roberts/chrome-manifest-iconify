@@ -1,6 +1,6 @@
 {
   "name": "chrome-manifest-iconify",
-  "version": "4.0.0",
+  "version": "5.0.0",
   "description": "Takes a master icon and automatically generates icon set for your Chrome extension or app by parsing the v2 manifest",
   "author": "Steven Roberts",
   "homepage": "https://github.com/Steven-Roberts/chrome-manifest-iconify",
@@ -21,7 +21,8 @@
   "main": "index.js",
   "files": [
     "index.js",
-    "lib"
+    "lib",
+    "bin/cli.js"
   ],
   "bin": {
     "chrome-manifest-iconify": "./bin/cli.js"

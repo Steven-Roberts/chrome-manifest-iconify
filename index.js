@@ -37,8 +37,8 @@ exports.Icon = Icon;
  * @param {string} options.manifest - The path to the v2 manifest.json
  * @param {string|Buffer} options.masterIcon - Either a path or Buffer of the
  * master icon from which all the generated icons will be reseized
- * @param {string} [options.outDir=parent directory of manifest] - Base
- * directory of the generated Icons
+ * @param {string} [options.outDir] - Base directory of the generated Icons.
+ * Defaults to parent directory of manifest
  * @param {string} [options.resizeMode] - The name of a
  * {@link http://sharp.pixelplumbing.com/en/stable/api-resize Sharp kernel}
  * @returns {Promise<module:chrome-manifest-iconify.Icon[]>} A promise that
