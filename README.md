@@ -7,16 +7,7 @@
 [![dependencies Status](https://david-dm.org/Steven-Roberts/chrome-manifest-iconify/status.svg)](https://david-dm.org/Steven-Roberts/chrome-manifest-iconify)
 [![devDependencies Status](https://david-dm.org/Steven-Roberts/chrome-manifest-iconify/dev-status.svg)](https://david-dm.org/Steven-Roberts/chrome-manifest-iconify?type=dev)
 
-When creating a Chrome extension or app, you need to provide a set of icons for
-context menus, browser actions, page actions, and the Chrome Web Store. Usually,
-these are just resized versions of the same image. The goal of
-chrome-manifest-iconify is to intelligently handle the tedious process of
-generated all these resized clones. All you need to do is provide it a master
-icon and [v2 manifest](https://developer.chrome.com/extensions/manifest) file.
-It will parse the manifest to determine the sizes, names, types, and paths of
-the icons it needs to generate. You can choose from several resizing algorithms
-as provided by [Sharp](https://sharp.dimens.io/en/stable/) so your entire icon
-set looks awesome.
+When creating a Chrome extension, you need to provide a set of icons for context menus, browser actions, page actions, and the Chrome Web Store. Usually, these are just resized versions of the same image. The goal of chrome-manifest-iconify is to intelligently handle the tedious process of generated all these resized clones. All you need to do is provide it a master icon and [v2 manifest](https://developer.chrome.com/extensions/manifest) file.  It will parse the manifest to determine the sizes, names, types, and paths of the icons it needs to generate. You can choose from several resizing algorithms as provided by [Sharp](https://sharp.dimens.io/en/stable/) so your entire icon set looks awesome.
 
 ## Installation
 
@@ -135,8 +126,8 @@ Writes an Icon to its path
 <a name="module_chrome-manifest-iconify.async"></a>
 
 #### chrome-manifest-iconify.async(options) ⇒ <code>Promise.&lt;Array.&lt;module:chrome-manifest-iconify.Icon&gt;&gt;</code>
-Generates icon set for a Chrome extension or app by parsing the v2 manifest.
-Note that this function does not actually write the files.
+Generates icon set for a Chrome extension by parsing the v2 manifest.  Note
+that this function does not actually write the files.
 
 **Kind**: static method of [<code>chrome-manifest-iconify</code>](#module_chrome-manifest-iconify)  
 **Returns**: <code>Promise.&lt;Array.&lt;module:chrome-manifest-iconify.Icon&gt;&gt;</code> - A promise that

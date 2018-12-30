@@ -30,8 +30,8 @@ const Icon = require('./lib/icon');
 exports.Icon = Icon;
 
 /**
- * Generates icon set for a Chrome extension or app by parsing the v2 manifest.
- * Note that this function does not actually write the files.
+ * Generates icon set for a Chrome extension by parsing the v2 manifest.  Note
+ * that this function does not actually write the files.
  * @async
  * @param {object} options - The options for generating the Icons
  * @param {string} options.manifest - The path to the v2 manifest.json

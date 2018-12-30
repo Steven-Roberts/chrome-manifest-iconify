@@ -7,8 +7,8 @@ const yargs = require('yargs');
 const {kernel} = require('sharp');
 
 const {argv} = yargs
-    .usage('$0 - Generates icon set for a Chrome extension or app by parsing' +
-        'the v2 manifest')
+    .usage('$0 - Generates icon set for a Chrome extension by parsing the v2 ' +
+        'manifest')
     .example('$0 -i master.svg')
     .example('$0 -i master.jpg -m src/manifest.json -r nearest -o build/icons')
     .option('i', {
