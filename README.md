@@ -54,75 +54,22 @@ The chrome-manifest-iconify module
 const chromeManifestIconify = require('chrome-manifest-iconify');
 
 const loadIcons = async () => {
-    try {
-        const icons = await chromeManifestIconify.async({
-            manifest: 'src/manifest.json',
-            masterIcon: 'img/test-icon.png'
-        });
+  try {
+    const icons = await chromeManifestIconify.async({
+      manifest: 'src/manifest.json',
+      masterIcon: 'img/test-icon.png'
+    });
 
-        // Do stuff with icons
-        const buffers = await Promise.all(icons.map((i) => i.contents));
+    // Do stuff with icons
+    const buffers = await Promise.all(icons.map((i) => i.contents));
 
-        console.log(buffers);
-    } catch (err) {
-        // Oh, no! Something bad happened
-        console.error(err);
-    }
+    console.log(buffers);
+  } catch (err) {
+    // Oh, no! Something bad happened
+    console.error(err);
+  }
 };
 ```
-
-* [chrome-manifest-iconify](#module_chrome-manifest-iconify)
-    * [.Icon](#module_chrome-manifest-iconify.Icon)
-        * [new Icon(path, data)](#new_module_chrome-manifest-iconify.Icon_new)
-        * [.path](#module_chrome-manifest-iconify.Icon+path) : <code>string</code>
-        * [.contents](#module_chrome-manifest-iconify.Icon+contents) : <code>Promise.&lt;Buffer&gt;</code>
-        * [.write()](#module_chrome-manifest-iconify.Icon+write) ⇒ <code>Promise</code>
-    * [.async(options)](#module_chrome-manifest-iconify.async) ⇒ <code>Promise.&lt;Array.&lt;module:chrome-manifest-iconify.Icon&gt;&gt;</code>
-
-<a name="module_chrome-manifest-iconify.Icon"></a>
-
-#### chrome-manifest-iconify.Icon
-Class representing a Chrome extension icon
-
-**Kind**: static class of [<code>chrome-manifest-iconify</code>](#module_chrome-manifest-iconify)  
-
-* [.Icon](#module_chrome-manifest-iconify.Icon)
-    * [new Icon(path, data)](#new_module_chrome-manifest-iconify.Icon_new)
-    * [.path](#module_chrome-manifest-iconify.Icon+path) : <code>string</code>
-    * [.contents](#module_chrome-manifest-iconify.Icon+contents) : <code>Promise.&lt;Buffer&gt;</code>
-    * [.write()](#module_chrome-manifest-iconify.Icon+write) ⇒ <code>Promise</code>
-
-<a name="new_module_chrome-manifest-iconify.Icon_new"></a>
-
-##### new Icon(path, data)
-Create an Icon
-
-
-| Param | Type | Description |
-| --- | --- | --- |
-| path | <code>string</code> | The file path to the Icon |
-| data | <code>object</code> | The Sharp image data |
-
-<a name="module_chrome-manifest-iconify.Icon+path"></a>
-
-##### icon.path : <code>string</code>
-The file path to the Icon
-
-**Kind**: instance property of [<code>Icon</code>](#module_chrome-manifest-iconify.Icon)  
-**Read only**: true  
-<a name="module_chrome-manifest-iconify.Icon+contents"></a>
-
-##### icon.contents : <code>Promise.&lt;Buffer&gt;</code>
-Asynchronously creates a Buffer for the Icon
-
-**Kind**: instance property of [<code>Icon</code>](#module_chrome-manifest-iconify.Icon)  
-<a name="module_chrome-manifest-iconify.Icon+write"></a>
-
-##### icon.write() ⇒ <code>Promise</code>
-Writes an Icon to its path
-
-**Kind**: instance method of [<code>Icon</code>](#module_chrome-manifest-iconify.Icon)  
-**Returns**: <code>Promise</code> - Promise that resolves when the Icon is written  
 <a name="module_chrome-manifest-iconify.async"></a>
 
 #### chrome-manifest-iconify.async(options) ⇒ <code>Promise.&lt;Array.&lt;module:chrome-manifest-iconify.Icon&gt;&gt;</code>
@@ -139,6 +86,6 @@ resolves with the generated Icons
 | options.manifest | <code>string</code> | The path to the v2 manifest.json |
 | options.masterIcon | <code>string</code> \| <code>Buffer</code> | Either a path or Buffer of the master icon from which all the generated icons will be reseized |
 | [options.outDir] | <code>string</code> | Base directory of the generated Icons. Defaults to parent directory of manifest |
-| [options.resizeMode] | <code>string</code> | The name of a [Sharp kernel](http://sharp.pixelplumbing.com/en/stable/api-resize) |
+| [options.resizeMode] | <code>string</code> | The name of a [https://sharp.pixelplumbing.com/api-resize#resize](https://sharp.pixelplumbing.com/api-resize#resize) |
 
 

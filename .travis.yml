@@ -1,9 +1,8 @@
 sudo: false
 language: node_js
 node_js:
-    - '9'
-    - '10'
-    - '12'
+  - '9'
+  - '15'
 after_script:
-    - npm run coverage
-    - npm run report
+  - npm run coverage
+  - npm run report
