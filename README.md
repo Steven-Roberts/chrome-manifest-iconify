@@ -7,7 +7,7 @@
 [![dependencies Status](https://david-dm.org/Steven-Roberts/chrome-manifest-iconify/status.svg)](https://david-dm.org/Steven-Roberts/chrome-manifest-iconify)
 [![devDependencies Status](https://david-dm.org/Steven-Roberts/chrome-manifest-iconify/dev-status.svg)](https://david-dm.org/Steven-Roberts/chrome-manifest-iconify?type=dev)
 
-When creating a Chrome extension, you need to provide a set of icons for context menus, browser actions, page actions, and the Chrome Web Store. Usually, these are just resized versions of the same image. The goal of chrome-manifest-iconify is to intelligently handle the tedious process of generated all these resized clones. All you need to do is provide it a master icon and [v2 manifest](https://developer.chrome.com/extensions/manifest) file.  It will parse the manifest to determine the sizes, names, types, and paths of the icons it needs to generate. You can choose from several resizing algorithms as provided by [Sharp](https://sharp.dimens.io/en/stable/) so your entire icon set looks awesome.
+When creating a Chrome extension, you need to provide a set of icons for context menus, browser actions, page actions, and the Chrome Web Store. Usually, these are just resized versions of the same image. The goal of chrome-manifest-iconify is to intelligently handle the tedious process of generated all these resized clones. All you need to do is provide it a master icon and [v2 manifest](https://developer.chrome.com/extensions/manifest) file.  It will parse the manifest to determine the sizes, names, types, and paths of the icons it needs to generate. You can choose from several resizing algorithms as provided by [Sharp](https://sharp.pixelplumbing.com/) so your entire icon set looks awesome.
 
 ## Installation
 
@@ -86,6 +86,6 @@ resolves with the generated Icons
 | options.manifest | <code>string</code> | The path to the v2 manifest.json |
 | options.masterIcon | <code>string</code> \| <code>Buffer</code> | Either a path or Buffer of the master icon from which all the generated icons will be reseized |
 | [options.outDir] | <code>string</code> | Base directory of the generated Icons. Defaults to parent directory of manifest |
-| [options.resizeMode] | <code>string</code> | The name of a [https://sharp.pixelplumbing.com/api-resize#resize](https://sharp.pixelplumbing.com/api-resize#resize) |
+| [options.resizeMode] | <code>string</code> | The name of a [Sharp kernel](https://sharp.pixelplumbing.com/api-resize#resize) |
 
 

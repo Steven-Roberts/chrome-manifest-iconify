@@ -38,7 +38,7 @@ exports.Icon = Icon;
  * @param {string} [options.outDir] - Base directory of the generated Icons.
  * Defaults to parent directory of manifest
  * @param {string} [options.resizeMode] - The name of a
- * {@link https://sharp.pixelplumbing.com/api-resize#resize}
+ * {@link https://sharp.pixelplumbing.com/api-resize#resize Sharp kernel}
  * @returns {Promise<module:chrome-manifest-iconify.Icon[]>} A promise that
  * resolves with the generated Icons
  */
